@@ -1,0 +1,30 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "RateLimitInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "rateLimitBy": "ip",
+          "requestsAllowed": 20,
+          "timeWindowMinutes": 1
+        }
+      },
+      "name": "rate-limit-inbound",
+      "policyType": "rate-limit-inbound"
+    },
+    {
+      "handler": {
+        "export": "CachingInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "expirationSecondsTtl": 60,
+          "dangerouslyIgnoreAuthorizationHeader": false,
+          "headers": []
+        }
+      },
+      "name": "caching-inbound",
+      "policyType": "caching-inbound"
+    }
+  ]
+}

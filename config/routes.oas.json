@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Zuplo API"
+  },
+  "paths": {
+    "/dogs": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "All dogs",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://echo.zuplo.io"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "rate-limit-inbound",
+              "caching-inbound"
+            ]
+          }
+        },
+        "operationId": "af4ff63f-cef9-48f9-aa3d-14f030a18104"
+      }
+    },
+    "/random-image": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "Get a random dog image",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://dog.ceo/api/breeds/image/random"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "caching-inbound",
+              "rate-limit-inbound"
+            ]
+          }
+        },
+        "operationId": "854c0b6e-6304-4d49-a567-79e67e2e6408"
+      }
+    }
+  }
+}
