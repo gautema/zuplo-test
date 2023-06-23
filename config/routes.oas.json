@@ -15,10 +15,10 @@
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "export": "urlForwardHandler",
+            "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "baseUrl": "https://dog.ceo/api/breeds/list/all"
+              "rewritePattern": "https://dog.ceo/api/breeds/list/all"
             }
           },
           "policies": {
@@ -41,15 +41,14 @@
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "export": "urlForwardHandler",
+            "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "baseUrl": "https://dog.ceo/api/breeds/image/random"
+              "rewritePattern": "https://dog.ceo/api/breeds/image/random"
             }
           },
           "policies": {
             "inbound": [
-              "caching-inbound",
               "rate-limit-inbound"
             ]
           }
